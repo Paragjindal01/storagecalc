@@ -1,5 +1,7 @@
 # StorageCalc
 
+> This case study documents the integrated portfolio build. Use the [standalone README](../../README.md#run-independently) for this repository’s entry point and test commands.
+
 StorageCalc compares uniform-node replicated and erasure-coded storage designs. Its interactive inputs cover disk geometry, replication, erasure coding, reservations, operating headroom, failed nodes, and expansion. The chart and JSON export show theoretical capacity separately from planning capacity.
 
 ## Run
