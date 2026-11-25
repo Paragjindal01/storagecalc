@@ -1,0 +1,41 @@
+{
+  "name": "@paragjindal01/storagecalc",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "description": "Compare replication and erasure coding, model a node outage, and quantify expansion headroom.",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "vite",
+    "preview": "vite preview",
+    "build": "vite build",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "@paragjindal01/infra-simulation": "file:vendor/infra-simulation-v2.0.0.tgz"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "6.0.2",
+    "vite": "8.0.16"
+  },
+  "files": [
+    "src",
+    "tools",
+    "docs",
+    "public",
+    "vendor",
+    ".github",
+    ".gitignore",
+    ".dockerignore",
+    "Dockerfile",
+    "nginx.conf",
+    "index.html",
+    "vite.config.mjs",
+    "CHANGELOG.md",
+    "npm-shrinkwrap.json"
+  ]
+}
