@@ -19,6 +19,8 @@ Open [http://localhost:5173](http://localhost:5173). Run `npm test` for the pack
 
 To use Docker, build with `docker build -t storagecalc .` and run with `docker run --rm -p 127.0.0.1:4173:80 storagecalc`. The static browser application is served on port 4173.
 
+The workbench uses the final Higgsfield portfolio masthead (`abf3f80`) with local poster art and fonts. The artwork depicts fictional scenes. [Font licenses](public/fonts/)
+
 ## Architecture
 
 ```mermaid

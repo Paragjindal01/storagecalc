@@ -4,11 +4,14 @@ import { createSnapshot, SCENARIOS } from './lab/simulator.mjs';
 import { apps, primary } from './project.mjs';
 import './standalone.css';
 import './engineering.css';
+import './higgsfield/lab/engineering-lab.css';
 
 const lab = 'https://paragjindal.com/lab';
 const route = /^\/lab\/([a-z-]+)\/?$/.exec(window.location.pathname)?.[1];
 const project = apps.find(({ id }) => id === route) ?? primary;
 const Application = project.Application;
+const posters = import.meta.glob('./higgsfield/lab/posters/*.jpg', { eager: true, import: 'default', query: '?url' });
+const mastheadImage = posters[`./higgsfield/lab/posters/${project.id}.jpg`];
 
 function setParameter(key, value) {
   const url = new URL(window.location.href);
@@ -41,18 +44,24 @@ export default function Standalone() {
   }
 
   return (
-    <div className="lab-shell standalone-shell">
+    <div className="lab-shell hf-engineering-lab hf-lab-standalone standalone-shell">
       <a className="skip-link" href="#lab-main">Skip to application</a>
-      <header className="lab-header">
-        <a className="lab-brand" href="/">{primary.name}</a>
-        <div><a href={lab + '/' + primary.id}>Online demo</a><a href={lab}>Engineering Lab</a></div>
-      </header>
-      <main className="lab-main standalone-main" id="lab-main" tabIndex={-1}>
-        <div className="lab-heading">
-          <span className="eyebrow">{project.area}</span>
-          <h1>{project.name}</h1>
-          <p>{project.description}</p>
+      <header className="labhero">
+        {mastheadImage && <div className="labhero__art" aria-hidden="true"><img src={mastheadImage} alt="" /></div>}
+        <div className="labhero__inner">
+          <div className="labhero__crumb">
+            <a href="/" aria-label={`${primary.name} standalone home`}>Standalone</a>
+            <i aria-hidden="true">/</i>
+            <a href={lab}>Engineering Lab</a>
+            <i aria-hidden="true">/</i>
+            <span>{project.area}</span>
+          </div>
+          <h1 className="labhero__title">{project.name}</h1>
+          <p className="labhero__sub">{project.description}</p>
+          <div className="labhero__facts"><a className="chip" href={lab + '/' + primary.id}>Online demo</a></div>
         </div>
+      </header>
+      <main className="labbody lab-main standalone-main" id="lab-main" tabIndex={-1}>
         {project.simulation && (
           <div className="lab-scenario">
             <div><strong><span className="status-dot" /> Simulated telemetry</strong><small>{snapshot.facilities[0].name} · step {snapshot.step}</small></div>
